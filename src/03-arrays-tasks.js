@@ -486,7 +486,7 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-  return [... new Set(arr)];
+  return [...new Set(arr)];
 }
 
 /**
@@ -554,7 +554,7 @@ function selectMany(/* arr, childrenSelector */) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/*arr, indexes*/) {
+function getElementByIndexes(/* arr, indexes */) {
   throw new Error('Not implemented');
 }
 
