@@ -554,8 +554,14 @@ function selectMany(/* arr, childrenSelector */) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  const el = arr[indexes[0]];
+  const shiftedIndexes = indexes.slice();
+  if (Array.isArray(el)) {
+    shiftedIndexes.shift();
+    return getElementByIndexes(el, shiftedIndexes);
+  }
+  return el;
 }
 
 
@@ -577,8 +583,19 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  let firstMidle = [];
+  let secondMidle = [];
+  const resultArr = [];
+  if (arr.length % 2 === 0) {
+    firstMidle = arr.slice(0, arr.length / 2);
+    secondMidle = arr.slice(arr.length / 2, arr.length);
+    return resultArr.concat(secondMidle).concat(firstMidle);
+  }
+  firstMidle = arr.slice(0, Math.floor(arr.length / 2));
+  secondMidle = arr.slice(Math.ceil(arr.length / 2), arr.length);
+  return resultArr.concat(secondMidle).concat(arr[Math.floor(arr.length / 2)])
+    .concat(firstMidle);
 }
 
 
